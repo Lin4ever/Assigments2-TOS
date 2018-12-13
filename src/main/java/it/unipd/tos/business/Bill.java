@@ -30,6 +30,10 @@ public class Bill implements RestaurantBill{
                 total += m.getPrice();
             }
         }
+
+        if(total>100){
+            total=total*0.95;
+        }
         return total;
     }
 }
