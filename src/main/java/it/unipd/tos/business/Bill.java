@@ -14,6 +14,9 @@ public class Bill implements RestaurantBill{
     public double getOrderPrice(List<MenuItem> itemsOrdered) throws RestaurantBillException{
         double total=0;
 
+        if(itemsOrdered.size()>20){
+            throw new RestaurantBillException("Errore! ci sono più di 20 elementi nell'ordine");
+        }
         long pizze = itemsOrdered.stream().filter(a -> a.getType().equals(MenuItem.itemType.PIZZA)).count();
         if(pizze>10){
             double min = itemsOrdered.get(0).getPrice();
